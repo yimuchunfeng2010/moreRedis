@@ -29,3 +29,7 @@ A distributed middleware to promote redis concurrent efficiency
 # [version:0.0.7]
 ### Features
 修复grpc错误
+
+# [version:0.0.8]
+### Features
+优化zookeeper连接，采用长连接

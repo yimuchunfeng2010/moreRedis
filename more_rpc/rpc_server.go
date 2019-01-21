@@ -29,6 +29,7 @@ func (s *MoreServer) InSetValue(ctx context.Context, data *pb.Data)(resp *pb.Dat
 		return
 	}
 
+	logrus.Infof("internal_interface.PreSet Success")
 	return &pb.Data{},nil
 }
 
@@ -37,7 +38,7 @@ func (s *MoreServer) Commit(ctx context.Context, data *pb.CommitIDMsg)(resp *pb.
 	defer func(){
 		cancel()
 	}()
-
+	logrus.Infof("internal_interface.Commit")
 	err = internal_interface.Commit(data.CommitID)
 	if err != nil {
 		logrus.Warningf("Commit Failed[data:%+v, err:%+s]", data, err.Error())

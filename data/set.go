@@ -8,6 +8,7 @@ import (
 	"more-for-redis/more_rpc"
 	"time"
 	"more-for-redis/global"
+	"sync"
 )
 
 func Set(key string, value string)(err error){
@@ -18,8 +19,11 @@ func Set(key string, value string)(err error){
 
 	}
 	logrus.Infof("lockName %s",lockName)
+	ackChan := make(chan bool,len(global.Config.RemoteRpcServers))
 	defer func(){
 		distributed_lock.Unlock(lockName)
+		// TODO 处理通道关闭检测的问题
+		close(ackChan)
 	}()
 
 	logrus.Infof("Set Key:%s, Value:%s\n", key, value)
@@ -29,18 +33,21 @@ func Set(key string, value string)(err error){
 	if err != nil {
 		return
 	}
-	ackChan := make(chan bool)
+	var wg sync.WaitGroup
 	for _, client := range  global.Config.RpcClient{
 		go func(){
+			wg.Add(1)
 			_, err = more_rpc.SetValue(client,pb.Data{Key:key,Value:value,CommitID:commitID})
 			if err != nil {
 				ackChan <- true
 			} else{
 				ackChan <- false
 			}
+			wg.Done()
 		}()
 	}
 
+	wg.Wait()
 	timeout := global.Config.Timeout
 	ackCount := 0
 	for timeout != 0 && ackCount < len(global.Config.RemoteRpcServers) {
@@ -49,19 +56,15 @@ func Set(key string, value string)(err error){
 		case _, ok := <-ackChan:
 			if ok {
 				ackCount++
-			} else {
-				goto ProcessJob
 			}
 		default:
-
 		}
 
-		time.Sleep(time.Second / 1000)
+		time.Sleep(time.Millisecond)
 		timeout--
 	}
-	close(ackChan)
 
-	ProcessJob:
+
 	// 提交
 	if ackCount == len(global.Config.RemoteRpcServers) {
 		for _, client := range global.Config.RpcClient {

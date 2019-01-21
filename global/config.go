@@ -4,6 +4,7 @@ import (
 	"github.com/garyburd/redigo/redis"
 	"more-for-redis/types"
 	pb "more-for-redis/more_rpc/more_proto"
+	"github.com/samuel/go-zookeeper/zk"
 	"google.golang.org/grpc"
 )
 
@@ -17,14 +18,18 @@ var Config = struct {
 	PreDoReqList     *types.ProcessingRequest
 	RpcConn          []*grpc.ClientConn
 	RpcClient        []pb.MoreRpcProtoClient
+	ZkConn           *zk.Conn
+	ZkConnMaxTime    int
 }{
 	ZkIPaddr:         "192.168.228.143:2181",
 	RedisAddr:        "127.0.0.1:6379",
-	LocalRpcAddr:     "127.0.0.1:50051",
-	RemoteRpcServers: []string{"127.0.0.1:50051"},
+	LocalRpcAddr:     "192.168.228.143:50052",
+	RemoteRpcServers: []string{"192.168.228.143:50052"},
 	RedisConn:        nil,
-	Timeout:          5,
+	Timeout:          5000,
 	PreDoReqList:     nil,
 	RpcConn:          nil,
 	RpcClient:        nil,
+	ZkConn:           nil,
+	ZkConnMaxTime:    1000000,
 }

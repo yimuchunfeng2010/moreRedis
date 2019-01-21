@@ -9,6 +9,8 @@ import (
 	"github.com/sirupsen/logrus"
 	"more-for-redis/more_rpc"
 	"google.golang.org/grpc"
+	"github.com/samuel/go-zookeeper/zk"
+	"time"
 )
 
 func init() {
@@ -27,6 +29,13 @@ func init() {
 		}
 		global.Config.RpcConn = append(global.Config.RpcConn, conn)
 		global.Config.RpcClient = append(global.Config.RpcClient,pb.NewMoreRpcProtoClient(conn))
+	}
+
+	var hosts = []string{global.Config.ZkIPaddr}
+	global.Config.ZkConn, _, err = zk.Connect(hosts, 100000*time.Minute)
+	if err != nil {
+		logrus.Errorf("Connect %s", err.Error())
+		return
 	}
 
 }

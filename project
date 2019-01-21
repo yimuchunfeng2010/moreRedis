@@ -1,4 +1,4 @@
 name: MoreForRedis
-version: 0.0.7
+version: 0.0.8
 description: 一个提高redis读速度和并发效率的分布式中间件
 program_language: golang

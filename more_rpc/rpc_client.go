@@ -8,7 +8,7 @@ import (
 )
 
 func SetValue(client pb.MoreRpcProtoClient, data pb.Data) (resp *pb.Data, err error) {
-	ctx, cancel := context.WithTimeout(context.Background(), 5000*time.Millisecond)
+	ctx, cancel := context.WithTimeout(context.Background(), 3000*time.Millisecond)
 	defer func(){
 		cancel()
 	}()
@@ -21,7 +21,7 @@ func SetValue(client pb.MoreRpcProtoClient, data pb.Data) (resp *pb.Data, err er
 }
 
 func Commit(client pb.MoreRpcProtoClient, data pb.CommitIDMsg) (resp *pb.CommitIDMsg, err error) {
-	ctx, cancel := context.WithTimeout(context.Background(), 5000*time.Millisecond)
+	ctx, cancel := context.WithTimeout(context.Background(), 3000*time.Millisecond)
 	defer func(){
 		cancel()
 	}()
@@ -34,7 +34,7 @@ func Commit(client pb.MoreRpcProtoClient, data pb.CommitIDMsg) (resp *pb.CommitI
 }
 
 func Drop(client pb.MoreRpcProtoClient, data pb.CommitIDMsg) (resp *pb.CommitIDMsg, err error) {
-	ctx, cancel := context.WithTimeout(context.Background(), 5000*time.Millisecond)
+	ctx, cancel := context.WithTimeout(context.Background(), 3000*time.Millisecond)
 	defer func(){
 		cancel()
 	}()
