@@ -1,4 +1,4 @@
-package test
+package main
 
 import (
 	"more-for-redis/routes/rpc"
@@ -8,6 +8,11 @@ import (
 	pb "more-for-redis/more_rpc/more_proto"
 	"github.com/sirupsen/logrus"
 	"google.golang.org/grpc"
+	"github.com/samuel/go-zookeeper/zk"
+	"time"
+	"more-for-redis/distributed_lock"
+	"fmt"
+	"sync"
 )
 
 func init() {
@@ -26,6 +31,12 @@ func init() {
 		}
 		global.Config.RpcConn = append(global.Config.RpcConn, conn)
 		global.Config.RpcClient = append(global.Config.RpcClient, pb.NewMoreRpcProtoClient(conn))
+	}
+	var hosts = []string{global.Config.ZkIPaddr}
+	global.Config.ZkConn, _, err = zk.Connect(hosts, 100000*time.Minute)
+	if err != nil {
+		logrus.Errorf("Connect %s", err.Error())
+		return
 	}
 
 }
@@ -67,11 +78,36 @@ func RedisSetGet() (err error) {
 	return
 }
 
-func main()  {
-	err := MoreSetGet()
+func ZkConnTest() (err error) {
+	var wg sync.WaitGroup
+	for i := 0; i < 10000; i++ {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			lockName, err := distributed_lock.Lock()
+			if err != nil {
+				logrus.Errorf(fmt.Sprintf("services.Lock Failed! [Err:%s]", err.Error()))
+				return
+
+			}
+			logrus.Infof("lockName %s", lockName)
+			err = distributed_lock.Unlock(lockName)
+			if err != nil {
+				logrus.Errorf(fmt.Sprintf("services.UnLock Failed! [Err:%s]", err.Error()))
+				return
+
+			}
+		}()
+	}
+	wg.Wait()
+	return
+}
+
+func main() {
+	err := ZkConnTest()
 	if err != nil {
-		logrus.Errorf("Test Fail Err: %s",err.Error())
+		logrus.Errorf("Test Fail Err: %s", err.Error())
 	} else {
-		logrus.Infof("Test MoreSetGet Success")
+		logrus.Infof("Test Success")
 	}
 }
