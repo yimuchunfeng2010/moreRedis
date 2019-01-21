@@ -7,7 +7,7 @@ import (
 	"errors"
 )
 
-func Set(context *gin.Context) {
+func Update(context *gin.Context) {
 
 	key := context.Param("key")
 	value := context.Param("value")
@@ -22,4 +22,3 @@ func Set(context *gin.Context) {
 		context.JSON(http.StatusOK, gin.H{"Status": "success"})
 	}
 }
-

@@ -9,3 +9,7 @@ A distributed middleware to promote redis concurrent efficiency
 # [version:0.0.2]
 ### Features
 实现基于zookeeper的分布式读写锁
+
+# [version:0.0.3]
+### Features
+引入gin框架，实现部分rest接口框架

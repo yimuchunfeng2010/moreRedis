@@ -1,5 +1,4 @@
 package rest
-
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
@@ -7,11 +6,10 @@ import (
 	"errors"
 )
 
-func Set(context *gin.Context) {
+func Delete(context *gin.Context) {
 
 	key := context.Param("key")
-	value := context.Param("value")
-	logrus.Infof("%s Set Key:%s, Value:%s\n",key, value)
+	logrus.Infof("%s Set Key:%s",key)
 
 	// TODO 待实现分布式读写锁
 	// TODO 待实现读写数据
@@ -22,4 +20,3 @@ func Set(context *gin.Context) {
 		context.JSON(http.StatusOK, gin.H{"Status": "success"})
 	}
 }
-
