@@ -7,6 +7,7 @@ import (
 	"strings"
 	"github.com/sirupsen/logrus"
 	"more-for-redis/global"
+	"errors"
 )
 
 // 写锁
@@ -15,7 +16,7 @@ func Lock() (lockName string, err error) {
 	var hosts = []string{global.Config.ZkIPaddr}
 	conn, _, err := zk.Connect(hosts, time.Second*5)
 	if err != nil {
-		logrus.Errorf("%s", err.Error())
+		logrus.Errorf("Connect %s", err.Error())
 		return "", err
 	}
 	defer conn.Close()
@@ -23,7 +24,7 @@ func Lock() (lockName string, err error) {
 	// 获取当前子节点
 	children, _, err := conn.Children("/Lock")
 	if err != nil {
-		logrus.Errorf("%s", err.Error())
+		logrus.Errorf("Children %s", err.Error())
 		return "", err
 	}
 
@@ -37,18 +38,18 @@ func Lock() (lockName string, err error) {
 
 	lockPath, err := conn.Create(wLockPath, wLockData, wLockFlags, acl)
 	if err != nil {
-		logrus.Errorf("%s", err.Error())
+		logrus.Errorf("Create %s", err.Error())
 		return "", err
 	}
 
 	if "" != maxChild {
 		// 对最大子节点设置观察点
-		_, _, ech, err := conn.ExistsW(maxChild)
+		_, _, ech, err := conn.ExistsW("/Lock/"+maxChild)
 		if err != nil {
-			logrus.Errorf("%s", err.Error())
+			logrus.Errorf("ExistsW maxChild: %s, err: %s ", maxChild, err.Error())
 			return "", err
 		}
-		timeout := 60 // 超时时间10s
+		timeout := global.Config.Timeout // 超时时间10s
 		for timeout > 0 {
 			select {
 			case _, ok := <-ech:
@@ -60,21 +61,20 @@ func Lock() (lockName string, err error) {
 				timeout--
 			}
 		}
-		return "", nil
+		return "", errors.New("Get Lock Fail timeout")
 	} else {
 		return lockPath, nil
 	}
 
-	return "", nil
+	return "", errors.New("Get Lock Fail")
 }
 
 // 释放写锁
 func Unlock(lockName string) error {
-
 	var hosts = []string{global.Config.ZkIPaddr}
 	conn, _, err := zk.Connect(hosts, time.Second*5)
 	if err != nil {
-		logrus.Errorf("%s", err.Error())
+		logrus.Errorf("Unlock Connect %s", err.Error())
 		return err
 	}
 	defer conn.Close()
@@ -82,7 +82,7 @@ func Unlock(lockName string) error {
 	// 删除节点
 	err = conn.Delete(lockName, 0)
 	if err != nil {
-		logrus.Errorf("%s", err.Error())
+		logrus.Errorf("Unlock Delete lockName: %s, err: %s", lockName, err.Error())
 		return err
 	}
 
@@ -95,7 +95,7 @@ func RLock() (lockName string, err error) {
 	var hosts = []string{global.Config.ZkIPaddr}
 	conn, _, err := zk.Connect(hosts, time.Second*5)
 	if err != nil {
-		logrus.Errorf("%s", err.Error())
+		logrus.Errorf("RLock Connect%s", err.Error())
 		return "", err
 	}
 	defer conn.Close()
@@ -103,7 +103,7 @@ func RLock() (lockName string, err error) {
 	// 获取当前子节点
 	children, _, err := conn.Children("/Lock")
 	if err != nil {
-		logrus.Errorf("%s", err.Error())
+		logrus.Errorf("RLock Children %s", err.Error())
 		return "", err
 	}
 
@@ -117,22 +117,24 @@ func RLock() (lockName string, err error) {
 
 	lockPath, err := conn.Create(wLockPath, wLockData, wLockFlags, acl)
 	if err != nil {
-		logrus.Errorf("%s", err.Error())
+		logrus.Errorf("RLock Create %s", err.Error())
 		return "", err
 	}
 
+	logrus.Infof("maxChild %s",maxChild)
 	if "" != maxChild {
 		// 对最大子节点设置观察点
-		_, _, ech, err := conn.ExistsW(maxChild)
+		_, _, ech, err := conn.ExistsW("/Lock/"+maxChild)
 		if err != nil {
-			logrus.Errorf("%s", err.Error())
+			logrus.Errorf("RLock ExistsW %s", err.Error())
 			return "", err
 		}
-		timeout := 60 // 超时时间10s
+		timeout := global.Config.Timeout // 超时时间10s
 		for timeout > 0 {
 			select {
 			case _, ok := <-ech:
 				if ok {
+					logrus.Infof("success reture lockPath",lockPath)
 					return lockPath, nil
 				}
 			default:
@@ -140,12 +142,12 @@ func RLock() (lockName string, err error) {
 				timeout--
 			}
 		}
-		return "", nil
+		return "", errors.New("Get Lock Fail timeout")
 	} else {
 		return lockPath, nil
 	}
 
-	return "", nil
+	return "", errors.New("Get Lock Fail")
 }
 
 // 释放读锁
@@ -153,7 +155,7 @@ func RUnlock(lockName string) error {
 	var hosts = []string{global.Config.ZkIPaddr}
 	conn, _, err := zk.Connect(hosts, time.Second*5)
 	if err != nil {
-		logrus.Errorf("%s", err.Error())
+		logrus.Errorf("RUnlock Connect %s", err.Error())
 		return err
 	}
 	defer conn.Close()
@@ -161,7 +163,7 @@ func RUnlock(lockName string) error {
 	// 删除节点
 	err = conn.Delete(lockName, 0)
 	if err != nil {
-		logrus.Errorf("%s", err.Error())
+		logrus.Errorf("RUnlock Delete %s", err.Error())
 		return err
 	}
 

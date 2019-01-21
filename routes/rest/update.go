@@ -11,7 +11,7 @@ func Update(context *gin.Context) {
 
 	key := context.Param("key")
 	value := context.Param("value")
-	logrus.Infof("%s Set Key:%s, Value:%s\n",key, value)
+	logrus.Infof("Set Key:%s, Value:%s\n",key, value)
 
 	// TODO 待实现分布式读写锁
 	// TODO 待实现读写数据

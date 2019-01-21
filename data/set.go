@@ -17,6 +17,7 @@ func Set(key string, value string)(err error){
 		return
 
 	}
+	logrus.Infof("lockName %s",lockName)
 	defer func(){
 		distributed_lock.Unlock(lockName)
 	}()

@@ -9,7 +9,7 @@ import (
 func Delete(context *gin.Context) {
 
 	key := context.Param("key")
-	logrus.Infof("%s Set Key:%s",key)
+	logrus.Infof("Set Key:%s",key)
 
 	// TODO 待实现分布式读写锁
 	// TODO 待实现读写数据
