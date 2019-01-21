@@ -1,12 +1,14 @@
-package more_for_redis
+package main
 
 import (
 	"github.com/gin-gonic/gin"
 	"more-for-redis/routes/rest"
 	"more-for-redis/global"
 	"github.com/garyburd/redigo/redis"
+	pb "more-for-redis/more_rpc/more_proto"
 	"github.com/sirupsen/logrus"
 	"more-for-redis/more_rpc"
+	"google.golang.org/grpc"
 )
 
 func init() {
@@ -16,11 +18,22 @@ func init() {
 		return
 	}
 	global.Config.RedisConn = conn
+
+	for _, server := range global.Config.RemoteRpcServers{
+		conn, err := grpc.Dial(server, grpc.WithInsecure())
+		if err != nil {
+			logrus.Warningf("fail to dial: %s", err.Error())
+			return
+		}
+		global.Config.RpcConn = append(global.Config.RpcConn, conn)
+		global.Config.RpcClient = append(global.Config.RpcClient,pb.NewMoreRpcProtoClient(conn))
+	}
+
 }
 
 func main() {
-
 	go more_rpc.MoreRpcInit()
+
 	router := gin.Default()
 	v1 := router.Group("/v1")
 	{

@@ -21,10 +21,11 @@ service MoreRpcProto {
 }
 
 message Data {
-    string key = 1;
-    string value = 2;
-}
+    string Key = 1;
+    string Value = 2;
+    int64 commitID = 3;
+ }
 
 message CommitIDMsg{
-    string CommitID = 3;
+    int64 CommitID = 4;
 }

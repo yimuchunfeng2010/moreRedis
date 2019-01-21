@@ -7,6 +7,8 @@ import (
 	"google.golang.org/grpc"
 	pb "more-for-redis/more_rpc/more_proto"
 	"context"
+	"more-for-redis/internal_interface"
+	"time"
 )
 type MoreServer struct {
 }
@@ -16,14 +18,32 @@ func (s *MoreServer) InGetKey(ctx context.Context, data *pb.Data)(resp *pb.Data,
 }
 
 func (s *MoreServer) InSetValue(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
+	ctx, cancel := context.WithTimeout(context.Background(), 5000*time.Millisecond)
+	defer func(){
+		cancel()
+	}()
+
+	err = internal_interface.PreSet(data.Key,data.Value, data.CommitID)
 	return
 }
 
 func (s *MoreServer) Commit(ctx context.Context, data *pb.CommitIDMsg)(resp *pb.CommitIDMsg, err error){
+	ctx, cancel := context.WithTimeout(context.Background(), 5000*time.Millisecond)
+	defer func(){
+		cancel()
+	}()
+
+	err = internal_interface.Commit(data.CommitID)
 	return
 }
 
 func (s *MoreServer) Drop(ctx context.Context, data *pb.CommitIDMsg)(resp *pb.CommitIDMsg, err error){
+	ctx, cancel := context.WithTimeout(context.Background(), 5000*time.Millisecond)
+	defer func(){
+		cancel()
+	}()
+
+	err = internal_interface.Drop(data.CommitID)
 	return
 }
 
