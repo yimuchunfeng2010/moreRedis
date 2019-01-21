@@ -17,3 +17,7 @@ A distributed middleware to promote redis concurrent efficiency
 # [version:0.0.4]
 ### Features
 实现redis读写接口
+
+# [version:0.0.5]
+### Features
+引入grpc框架

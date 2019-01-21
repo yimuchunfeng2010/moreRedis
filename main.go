@@ -6,6 +6,7 @@ import (
 	"more-for-redis/global"
 	"github.com/garyburd/redigo/redis"
 	"github.com/sirupsen/logrus"
+	"more-for-redis/more_rpc"
 )
 
 func init() {
@@ -18,6 +19,8 @@ func init() {
 }
 
 func main() {
+
+	go more_rpc.MoreRpcInit()
 	router := gin.Default()
 	v1 := router.Group("/v1")
 	{
