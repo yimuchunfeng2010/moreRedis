@@ -18,10 +18,10 @@ var Config = struct {
 	RpcConn          []*grpc.ClientConn
 	RpcClient        []pb.MoreRpcProtoClient
 }{
-	ZkIPaddr:         "192.168.228.143:2181",
-	RedisAddr:        "192.168.228.143:6379",
+	ZkIPaddr:         "127.0.0.1:2181",
+	RedisAddr:        "127.0.0.1:6379",
 	LocalRpcAddr:     "127.0.0.1:50051",
-	RemoteRpcServers: []string{"127.0.0.1:50051", "127.0.0.1:50051", "127.0.0.1:50051"},
+	RemoteRpcServers: []string{"192.168.228.143:50051", "192.168.228.142:50051", "192.168.228.141:50051"},
 	RedisConn:        nil,
 	Timeout:          5,
 	PreDoReqList:     nil,
