@@ -21,7 +21,7 @@ var Config = struct {
 	ZkIPaddr:         "127.0.0.1:2181",
 	RedisAddr:        "127.0.0.1:6379",
 	LocalRpcAddr:     "127.0.0.1:50051",
-	RemoteRpcServers: []string{"192.168.228.143:50051", "192.168.228.142:50051", "192.168.228.141:50051"},
+	RemoteRpcServers: []string{"127.0.0.1:50051"},
 	RedisConn:        nil,
 	Timeout:          5,
 	PreDoReqList:     nil,

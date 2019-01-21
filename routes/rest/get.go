@@ -9,7 +9,7 @@ import (
 func Get(context *gin.Context) {
 
 	key := context.Param("key")
-	logrus.Infof("%s Get Key:%s",key)
+	logrus.Infof("Get Key:%s",key)
 
 
 	value, err := redis_operation.RedisGet(key)

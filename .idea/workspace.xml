@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df63ef12-f00b-4401-b8fc-4abf2248f58f" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" afterPath="$PROJECT_DIR$/CHANGELOG.md" />
+      <change beforePath="$PROJECT_DIR$/data/set.go" afterPath="$PROJECT_DIR$/data/set.go" />
       <change beforePath="$PROJECT_DIR$/global/config.go" afterPath="$PROJECT_DIR$/global/config.go" />
+      <change beforePath="$PROJECT_DIR$/more_rpc/rpc_server.go" afterPath="$PROJECT_DIR$/more_rpc/rpc_server.go" />
+      <change beforePath="$PROJECT_DIR$/project" afterPath="$PROJECT_DIR$/project" />
+      <change beforePath="$PROJECT_DIR$/redis_operation/redis.go" afterPath="$PROJECT_DIR$/redis_operation/redis.go" />
+      <change beforePath="$PROJECT_DIR$/routes/rest/get.go" afterPath="$PROJECT_DIR$/routes/rest/get.go" />
+      <change beforePath="$PROJECT_DIR$/routes/rest/set.go" afterPath="$PROJECT_DIR$/routes/rest/set.go" />
+      <change beforePath="$PROJECT_DIR$/routes/rpc/get.go" afterPath="$PROJECT_DIR$/routes/rpc/get.go" />
+      <change beforePath="$PROJECT_DIR$/routes/rpc/set.go" afterPath="$PROJECT_DIR$/routes/rpc/set.go" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,11 +22,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
+      <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="572">
+              <caret line="41" column="38" lean-forward="true" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
+              <folding>
+                <element signature="e#14#267#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="set.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/set.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="12" column="5" lean-forward="false" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+            <state relative-caret-position="880">
+              <caret line="64" column="53" lean-forward="false" selection-start-line="64" selection-start-column="37" selection-end-line="64" selection-end-column="53" />
               <folding>
                 <element signature="e#14#232#0" expanded="true" />
               </folding>
@@ -25,11 +46,31 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="rpc_client.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/more_rpc/rpc_client.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="18" column="5" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="18" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="more_rpc.pb.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/more_rpc/more_proto/more_rpc.pb.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="274">
+              <caret line="159" column="4" lean-forward="false" selection-start-line="159" selection-start-column="4" selection-end-line="159" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="get.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/rpc/get.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+            <state relative-caret-position="198">
+              <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
               <folding>
                 <element signature="e#13#87#0" expanded="true" />
               </folding>
@@ -40,8 +81,8 @@
       <file leaf-file-name="set.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/rpc/set.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+            <state relative-caret-position="198">
+              <caret line="9" column="16" lean-forward="false" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
               <folding>
                 <element signature="e#13#76#0" expanded="true" />
               </folding>
@@ -49,12 +90,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.go" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/global/config.go">
+      <file leaf-file-name="set.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/rest/set.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="308">
+              <caret line="14" column="17" lean-forward="true" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+              <folding>
+                <element signature="e#14#117#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -69,24 +112,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="set.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/rest/set.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="15" column="17" lean-forward="false" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
-              <folding>
-                <element signature="e#14#117#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CHANGELOG.md" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CHANGELOG.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="572">
-                <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="13" />
+              <first_editor relative-caret-position="660">
+                <caret line="30" column="8" lean-forward="false" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
                 <folding />
               </first_editor>
               <second_editor>
@@ -96,34 +127,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="rpc_server.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/more_rpc/rpc_server.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1026">
-              <caret line="50" column="60" lean-forward="false" selection-start-line="50" selection-start-column="48" selection-end-line="50" selection-end-column="60" />
+            <state relative-caret-position="638">
+              <caret line="59" column="32" lean-forward="false" selection-start-line="59" selection-start-column="32" selection-end-line="59" selection-end-column="32" />
               <folding>
                 <element signature="e#18#213#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="zk_locker.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/distributed_lock/zk_locker.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-22">
-              <caret line="15" column="8" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="8" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -145,6 +156,7 @@
       <find>rpc</find>
       <find>more_rpc</find>
       <find>ZkIPaddr</find>
+      <find>RedisConn</find>
     </findStrings>
   </component>
   <component name="GOROOT" path="C:\Go" />
@@ -159,29 +171,29 @@
         <option value="$PROJECT_DIR$/distributed_lock/zk_locker.go" />
         <option value="$PROJECT_DIR$/routes/rest/update.go" />
         <option value="$PROJECT_DIR$/routes/rest/delete.go" />
-        <option value="$PROJECT_DIR$/redis_operation/redis.go" />
         <option value="$PROJECT_DIR$/internal_interface/Set.go" />
         <option value="$PROJECT_DIR$/internal_interface/util.go" />
         <option value="$PROJECT_DIR$/internal_interface/util/util.go" />
         <option value="$PROJECT_DIR$/types/struct.go" />
         <option value="$PROJECT_DIR$/types/enum.go" />
         <option value="$PROJECT_DIR$/more_rpc/more_proto/more_rpc.proto" />
-        <option value="$PROJECT_DIR$/more_rpc/rpc_server.go" />
         <option value="$PROJECT_DIR$/more_rpc/more_proto/rpc_client.go" />
         <option value="$PROJECT_DIR$/vendor/vendor.json" />
         <option value="$PROJECT_DIR$/more_rpc/rpc_client.go" />
         <option value="$PROJECT_DIR$/internal_interface/commit.go" />
         <option value="$PROJECT_DIR$/main.go" />
         <option value="$PROJECT_DIR$/internal_interface/set.go" />
-        <option value="$PROJECT_DIR$/data/set.go" />
-        <option value="$PROJECT_DIR$/routes/rest/set.go" />
+        <option value="$PROJECT_DIR$/.gitignore.go" />
+        <option value="$PROJECT_DIR$/redis_operation/redis.go" />
+        <option value="$PROJECT_DIR$/routes/rest/get.go" />
         <option value="$PROJECT_DIR$/routes/rpc/set.go" />
         <option value="$PROJECT_DIR$/routes/rpc/get.go" />
-        <option value="$PROJECT_DIR$/routes/rest/get.go" />
+        <option value="$PROJECT_DIR$/routes/rest/set.go" />
+        <option value="$PROJECT_DIR$/data/set.go" />
+        <option value="$PROJECT_DIR$/global/config.go" />
+        <option value="$PROJECT_DIR$/more_rpc/rpc_server.go" />
         <option value="$PROJECT_DIR$/project" />
         <option value="$PROJECT_DIR$/CHANGELOG.md" />
-        <option value="$PROJECT_DIR$/.gitignore.go" />
-        <option value="$PROJECT_DIR$/global/config.go" />
       </list>
     </option>
   </component>
@@ -192,10 +204,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2869" />
+    <option name="x" value="-11" />
     <option name="y" value="-11" />
-    <option name="width" value="2763" />
-    <option name="height" value="1642" />
+    <option name="width" value="1942" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -324,15 +336,15 @@
     <option name="remove_strategy" value="false" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2869" y="-11" width="2763" height="1642" extended-state="6" />
+    <frame x="-11" y="-11" width="1942" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17695473" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25539955" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945284" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -374,9 +386,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="16" lean-forward="false" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
-          <folding>
-            <element signature="e#18#118#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -430,7 +440,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="506">
           <caret line="28" column="5" lean-forward="false" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-          <folding />
+          <folding>
+            <element signature="e#25#126#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -514,7 +526,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
-          <folding />
+          <folding>
+            <element signature="e#25#126#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -580,6 +594,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -667,14 +682,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/more_rpc/more_proto/more_rpc.pb.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="79" column="5" lean-forward="false" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/internal_interface/util/util.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
@@ -683,40 +690,122 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/more_rpc/rpc_client.go">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="5" lean-forward="false" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
-          <folding>
-            <element signature="e#18#118#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="22">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/distributed_lock/zk_locker.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="15" column="8" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/redis_operation/redis.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="36" column="5" lean-forward="false" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
-          <folding />
+        <state relative-caret-position="418">
+          <caret line="21" column="5" lean-forward="false" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+          <folding>
+            <element signature="e#25#126#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/rest/get.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="18" column="75" lean-forward="false" selection-start-line="18" selection-start-column="75" selection-end-line="18" selection-end-column="75" />
+        <state relative-caret-position="242">
+          <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
           <folding>
             <element signature="e#13#127#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/routes/rpc/get.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          <folding>
+            <element signature="e#13#87#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="902">
-          <caret line="41" column="39" lean-forward="false" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
+        <state relative-caret-position="572">
+          <caret line="41" column="38" lean-forward="true" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
           <folding>
             <element signature="e#14#267#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/global/config.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="23" column="48" lean-forward="false" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/rpc/set.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="16" lean-forward="false" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+          <folding>
+            <element signature="e#13#76#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/more_rpc/more_proto/more_rpc.pb.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="159" column="4" lean-forward="false" selection-start-line="159" selection-start-column="4" selection-end-line="159" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/more_rpc/rpc_client.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="18" column="5" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="18" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/rest/set.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="14" column="17" lean-forward="true" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+          <folding>
+            <element signature="e#14#117#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/set.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="880">
+          <caret line="64" column="53" lean-forward="false" selection-start-line="64" selection-start-column="37" selection-end-line="64" selection-end-column="53" />
+          <folding>
+            <element signature="e#14#232#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/more_rpc/rpc_server.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="638">
+          <caret line="59" column="32" lean-forward="false" selection-start-line="59" selection-start-column="32" selection-end-line="59" selection-end-column="32" />
+          <folding>
+            <element signature="e#18#213#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -732,87 +821,13 @@
     <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="572">
-            <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="13" />
+          <first_editor relative-caret-position="660">
+            <caret line="30" column="8" lean-forward="false" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
             <folding />
           </first_editor>
           <second_editor>
             <markdownNavigatorState />
           </second_editor>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/distributed_lock/zk_locker.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-22">
-          <caret line="15" column="8" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/set.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="5" lean-forward="false" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
-          <folding>
-            <element signature="e#14#232#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/rpc/get.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="e#13#87#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/rest/set.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" column="17" lean-forward="false" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
-          <folding>
-            <element signature="e#14#117#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/rpc/set.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding>
-            <element signature="e#13#76#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/more_rpc/rpc_server.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1026">
-          <caret line="50" column="60" lean-forward="false" selection-start-line="50" selection-start-column="48" selection-end-line="50" selection-end-column="60" />
-          <folding>
-            <element signature="e#18#213#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/global/config.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>

@@ -24,7 +24,12 @@ func (s *MoreServer) InSetValue(ctx context.Context, data *pb.Data)(resp *pb.Dat
 	}()
 
 	err = internal_interface.PreSet(data.Key,data.Value, data.CommitID)
-	return
+	if err != nil {
+		logrus.Warningf("PreSet Failed[data:%+v, err:%+s]", data, err.Error())
+		return
+	}
+
+	return &pb.Data{},nil
 }
 
 func (s *MoreServer) Commit(ctx context.Context, data *pb.CommitIDMsg)(resp *pb.CommitIDMsg, err error){
@@ -34,7 +39,11 @@ func (s *MoreServer) Commit(ctx context.Context, data *pb.CommitIDMsg)(resp *pb.
 	}()
 
 	err = internal_interface.Commit(data.CommitID)
-	return
+	if err != nil {
+		logrus.Warningf("Commit Failed[data:%+v, err:%+s]", data, err.Error())
+		return
+	}
+	return &pb.CommitIDMsg{},nil
 }
 
 func (s *MoreServer) Drop(ctx context.Context, data *pb.CommitIDMsg)(resp *pb.CommitIDMsg, err error){
@@ -44,7 +53,11 @@ func (s *MoreServer) Drop(ctx context.Context, data *pb.CommitIDMsg)(resp *pb.Co
 	}()
 
 	err = internal_interface.Drop(data.CommitID)
-	return
+	if err != nil {
+		logrus.Warningf("Drop Failed[data:%+v, err:%+s]", data, err.Error())
+		return
+	}
+	return &pb.CommitIDMsg{},nil
 }
 
 func MoreRpcInit(){

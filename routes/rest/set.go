@@ -8,10 +8,9 @@ import (
 )
 
 func Set(context *gin.Context) {
-
 	key := context.Param("key")
 	value := context.Param("value")
-	logrus.Infof("%s Set Key:%s, Value:%s\n", key, value)
+	logrus.Infof("Set Key:%s, Value:%s\n", key, value)
 
 	err := data.Set(key,value)
 	if err != nil {

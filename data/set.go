@@ -21,7 +21,7 @@ func Set(key string, value string)(err error){
 		distributed_lock.Unlock(lockName)
 	}()
 
-	logrus.Infof("%s Set Key:%s, Value:%s\n", key, value)
+	logrus.Infof("Set Key:%s, Value:%s\n", key, value)
 
 	// 发起提议
 	commitID, err := util.GenCommitID("Set" + key + value)

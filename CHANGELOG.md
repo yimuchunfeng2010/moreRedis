@@ -25,3 +25,7 @@ A distributed middleware to promote redis concurrent efficiency
 # [version:0.0.6]
 ### Features
 实现基本Set/Get功能
+
+# [version:0.0.7]
+### Features
+修复grpc错误
