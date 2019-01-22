@@ -45,3 +45,7 @@ A distributed middleware to promote redis concurrent efficiency
 # [version:1.0.1]
 ### Features
 Dockerfile
+
+# [version:1.0.2]
+### Features
+更新vendor
