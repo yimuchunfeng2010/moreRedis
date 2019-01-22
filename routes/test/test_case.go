@@ -1,7 +1,7 @@
-package main
+package test
 
 import (
-	"more-for-redis/routes/rpc"
+	//"more-for-redis/routes/rpc"
 	"more-for-redis/global"
 	"github.com/garyburd/redigo/redis"
 	pb "more-for-redis/more_rpc/more_proto"
@@ -113,78 +113,78 @@ func ZkConnTest() (err error) {
 }
 
 func main() {
-	var testCnt int64 = 100000
-	var i int64
-	var rpcSetTime int64
-	var rpcGetTime int64
-
-	var RedisSetTime int64
-	var RedisGetTime int64
-
-	var LightetTime int64
-	// 测试redis直接读写性能
-
-	for i = 0; i < testCnt; i++ {
-		startTime := time.Now()
-		err := rpc.RedisSet("AAAA", "BBBB")
-		if err != nil {
-			logrus.Errorf("rpc.Set err:%s", err.Error())
-		}
-		durTime := time.Now().Sub(startTime)
-		intTime := int64(durTime)
-		RedisSetTime += intTime
-	}
-
-	for i = 0; i < testCnt; i++ {
-		startTime := time.Now()
-		_,  err := rpc.RedisGet("AAAA")
-		if err != nil {
-			logrus.Errorf("rpc.Set err:%s", err.Error())
-		}
-		durTime := time.Now().Sub(startTime)
-		intTime := int64(durTime)
-		RedisGetTime += intTime
-	}
-
-
-	// 测试轻量级读性能
-	for i = 0; i < testCnt; i++ {
-		startTime := time.Now()
-		_, err := rpc.LigthGet("AAAA")
-		if err != nil {
-			logrus.Errorf("rpc.Set err:%s", err.Error())
-		}
-		durTime := time.Now().Sub(startTime)
-		intTime := int64(durTime)
-		LightetTime += intTime
-	}
-
-	// 测试本方案读写性能
-	for i = 0; i < testCnt; i++ {
-		startTime := time.Now()
-		_, err := rpc.Get("AAAA")
-		if err != nil {
-			logrus.Errorf("rpc.Set err:%s", err.Error())
-		}
-		durTime := time.Now().Sub(startTime)
-		intTime := int64(durTime)
-		rpcGetTime += intTime
-	}
-
-	for i = 0; i < testCnt/10; i++ {
-		startTime := time.Now()
-		err := rpc.Set("AAAA", "BBBB")
-		if err != nil {
-			logrus.Errorf("rpc.Set err:%s", err.Error())
-		}
-		durTime := time.Now().Sub(startTime)
-		intTime := int64(durTime)
-		rpcSetTime += intTime
-	}
-
-	logrus.Infof("Redis Set Time %dns", RedisSetTime/testCnt)
-	logrus.Infof("Redis Get Time %dns", RedisGetTime/testCnt)
-	logrus.Infof("My Set Time %dns", rpcSetTime/testCnt)
-	logrus.Infof("My Get Time %dns", rpcGetTime/testCnt)
-	logrus.Infof("My LigthGet Time %dns", LightetTime/testCnt)
+	//var testCnt int64 = 100000
+	//var i int64
+	//var rpcSetTime int64
+	//var rpcGetTime int64
+	//
+	//var RedisSetTime int64
+	//var RedisGetTime int64
+	//
+	//var LightetTime int64
+	//// 测试redis直接读写性能
+	//
+	//for i = 0; i < testCnt; i++ {
+	//	startTime := time.Now()
+	//	err := rpc.RedisSet("AAAA", "BBBB")
+	//	if err != nil {
+	//		logrus.Errorf("rpc.Set err:%s", err.Error())
+	//	}
+	//	durTime := time.Now().Sub(startTime)
+	//	intTime := int64(durTime)
+	//	RedisSetTime += intTime
+	//}
+	//
+	//for i = 0; i < testCnt; i++ {
+	//	startTime := time.Now()
+	//	_,  err := rpc.RedisGet("AAAA")
+	//	if err != nil {
+	//		logrus.Errorf("rpc.Set err:%s", err.Error())
+	//	}
+	//	durTime := time.Now().Sub(startTime)
+	//	intTime := int64(durTime)
+	//	RedisGetTime += intTime
+	//}
+	//
+	//
+	//// 测试轻量级读性能
+	//for i = 0; i < testCnt; i++ {
+	//	startTime := time.Now()
+	//	_, err := rpc.LigthGet("AAAA")
+	//	if err != nil {
+	//		logrus.Errorf("rpc.Set err:%s", err.Error())
+	//	}
+	//	durTime := time.Now().Sub(startTime)
+	//	intTime := int64(durTime)
+	//	LightetTime += intTime
+	//}
+	//
+	//// 测试本方案读写性能
+	//for i = 0; i < testCnt; i++ {
+	//	startTime := time.Now()
+	//	_, err := rpc.Get("AAAA")
+	//	if err != nil {
+	//		logrus.Errorf("rpc.Set err:%s", err.Error())
+	//	}
+	//	durTime := time.Now().Sub(startTime)
+	//	intTime := int64(durTime)
+	//	rpcGetTime += intTime
+	//}
+	//
+	//for i = 0; i < testCnt/10; i++ {
+	//	startTime := time.Now()
+	//	err := rpc.Set("AAAA", "BBBB")
+	//	if err != nil {
+	//		logrus.Errorf("rpc.Set err:%s", err.Error())
+	//	}
+	//	durTime := time.Now().Sub(startTime)
+	//	intTime := int64(durTime)
+	//	rpcSetTime += intTime
+	//}
+	//
+	//logrus.Infof("Redis Set Time %dns", RedisSetTime/testCnt)
+	//logrus.Infof("Redis Get Time %dns", RedisGetTime/testCnt)
+	//logrus.Infof("My Set Time %dns", rpcSetTime/testCnt)
+	//logrus.Infof("My Get Time %dns", rpcGetTime/testCnt)
+	//logrus.Infof("My LigthGet Time %dns", LightetTime/testCnt)
 }
