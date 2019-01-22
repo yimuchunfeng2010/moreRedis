@@ -41,3 +41,7 @@ A distributed middleware to promote redis concurrent efficiency
 # [version:1.0.0]
 ### Features
 完成性能测试，提供初始可用版本
+
+# [version:1.0.1]
+### Features
+Dockerfile
