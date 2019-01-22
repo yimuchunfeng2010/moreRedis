@@ -11,6 +11,7 @@ import (
 	"google.golang.org/grpc"
 	"github.com/samuel/go-zookeeper/zk"
 	"time"
+	"sync"
 )
 
 func init() {
@@ -38,6 +39,13 @@ func init() {
 		return
 	}
 
+	// 初始化本地读写锁
+	global.Config.LocalRWLocker = new(sync.RWMutex)
+	if nil == global.Config.LocalRWLocker{
+		logrus.Errorf("init LocalRWLocker Fail")
+		return
+	}
+
 }
 
 func main() {
@@ -47,11 +55,19 @@ func main() {
 	v1 := router.Group("/v1")
 	{
 		v1.GET("/:key", rest.Get)
-		v1.DELETE("/:key", rest.Delete)
 		v1.POST("/:key/:value", rest.Set)
-		v1.PUT("/:key/:value", rest.Update)
 
 	}
 
+	light  := router.Group("/light")
+	{
+		light.GET("/:key", rest.LightGet)
+	}
+
+	redis  := router.Group("/redis")
+	{
+		redis.GET("/:key", rest.RedisGet)
+		redis.POST("/:key/:value", rest.RedisSet)
+	}
 	router.Run(":8000")
 }

@@ -1,12 +1,17 @@
 package rpc
 
 import (
-	"github.com/sirupsen/logrus"
 	"more-for-redis/data"
+	"more-for-redis/global"
 )
 
 func Set(key string, value string) (err error) {
-	logrus.Infof("Set Key:%s, Value:%s\n", key, value)
+	//获取本地写锁
+	global.Config.LocalRWLocker.Lock()
+	defer func() {
+		global.Config.LocalRWLocker.Unlock()
+	}()
 	err = data.Set(key, value)
+
 	return
 }

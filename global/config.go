@@ -6,6 +6,7 @@ import (
 	pb "more-for-redis/more_rpc/more_proto"
 	"github.com/samuel/go-zookeeper/zk"
 	"google.golang.org/grpc"
+	"sync"
 )
 
 var Config = struct {
@@ -20,6 +21,7 @@ var Config = struct {
 	RpcClient        []pb.MoreRpcProtoClient
 	ZkConn           *zk.Conn
 	ZkConnMaxTime    int
+	LocalRWLocker    *sync.RWMutex
 }{
 	ZkIPaddr:         "192.168.228.143:2181",
 	RedisAddr:        "127.0.0.1:6379",
@@ -32,4 +34,5 @@ var Config = struct {
 	RpcClient:        nil,
 	ZkConn:           nil,
 	ZkConnMaxTime:    1000000,
+	LocalRWLocker:    nil,
 }

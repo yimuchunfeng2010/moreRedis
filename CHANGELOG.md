@@ -33,3 +33,11 @@ A distributed middleware to promote redis concurrent efficiency
 # [version:0.0.8]
 ### Features
 优化zookeeper连接，采用长连接
+
+# [version:0.0.9]
+### Features
+分布式读写方案修改为 分布式写锁+本地读写锁
+
+# [version:1.0.0]
+### Features
+完成性能测试，提供初始可用版本
