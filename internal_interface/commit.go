@@ -15,7 +15,7 @@ func PreSet(key string, value string, commitID int64)(err error){
 		Key:key,
 		Value:value,
 		Next:nil,
-		CreateTime:time.Now(),
+		CreateTime:time.Now().Unix(),
 	}
 
 	// 插入到头部

@@ -57,3 +57,7 @@ Dockerfile
 # [version:1.0.4]
 ### Features
 初始化时，删除zookeeper锁目录下的所有子节点
+
+# [version:1.0.5]
+### Features
+增加定时清理超时锁和待处理事务问题

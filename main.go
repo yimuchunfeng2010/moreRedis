@@ -13,6 +13,8 @@ import (
 	"github.com/samuel/go-zookeeper/zk"
 	"time"
 	"sync"
+	"more-for-redis/services"
+	"more-for-redis/task"
 )
 
 func init() {
@@ -56,8 +58,19 @@ func init() {
 
 }
 
+func CronInit() {
+	services.InitCrontab()
+	services.RunCrontab()
+
+	// 清理超时锁
+	task.CleanLocker()
+	// 清理超时Commit
+	task.CleanCommit()
+}
+
 func main() {
 	go more_rpc.MoreRpcInit()
+	go CronInit()
 
 	router := gin.Default()
 	v1 := router.Group("/v1")
