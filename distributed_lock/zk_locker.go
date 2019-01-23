@@ -69,11 +69,15 @@ func Lock() (lockName string, err error) {
 				timeout--
 			}
 		}
+		// 失败则删除当前节点
+		DeleteNode(lockName)
 		return "", errors.New("Get Lock Fail timeout")
 	} else {
 		return lockPath, nil
 	}
 
+	// 失败则删除当前节点
+	DeleteNode(lockName)
 	return "", errors.New("Get Lock Fail")
 }
 
@@ -145,11 +149,14 @@ func RLock() (lockName string, err error) {
 				timeout--
 			}
 		}
+		DeleteNode(lockName)
 		return "", errors.New("Get Lock Fail timeout")
 	} else {
 		return lockPath, nil
 	}
 
+	// 失败则删除当前节点
+	DeleteNode(lockName)
 	return "", errors.New("Get Lock Fail")
 }
 
@@ -254,4 +261,14 @@ func GetWorkingNode()(int,error){
 	}
 
 	return len(children), nil
+}
+
+func DeleteNode(nodeName string)(err error){
+	// 删除节点
+	err = global.Config.ZkConn.Delete(nodeName, 0)
+	if err != nil {
+		logrus.Errorf("deleteNode %s", err.Error())
+		return err
+	}
+	return
 }
