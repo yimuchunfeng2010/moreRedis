@@ -53,3 +53,7 @@ Dockerfile
 # [version:1.0.3]
 ### Features
 优化zookeeper获取锁流程，获取锁失败则删除当前节点
+
+# [version:1.0.4]
+### Features
+初始化时，删除zookeeper锁目录下的所有子节点

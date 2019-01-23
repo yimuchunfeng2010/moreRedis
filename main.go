@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"more-for-redis/routes/rest"
+	"more-for-redis/distributed_lock"
 	"more-for-redis/global"
 	"github.com/garyburd/redigo/redis"
 	pb "more-for-redis/more_rpc/more_proto"
@@ -43,6 +44,13 @@ func init() {
 	global.Config.LocalRWLocker = new(sync.RWMutex)
 	if nil == global.Config.LocalRWLocker{
 		logrus.Errorf("init LocalRWLocker Fail")
+		return
+	}
+
+	// 初始化删除zookeeper锁目录下所有子节点
+	err = distributed_lock.DeleteAllChildren("/Lock")
+	if err != nil {
+		logrus.Errorf("DeleteAllChildren error %s",err.Error())
 		return
 	}
 

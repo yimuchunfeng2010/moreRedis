@@ -23,7 +23,6 @@ func ReConnect()(err error){
 // 写锁
 func Lock() (lockName string, err error) {
 	// 创建临时写节点
-
 	if nil == global.Config.ZkConn{
 		if err = ReConnect();err != nil{
 			logrus.Errorf("zk connect fail err: %s",err.Error())
@@ -270,5 +269,26 @@ func DeleteNode(nodeName string)(err error){
 		logrus.Errorf("deleteNode %s", err.Error())
 		return err
 	}
+	return
+}
+
+
+func DeleteAllChildren(dir string)(err error){
+	// 获取当前子节点
+	children, _, err := global.Config.ZkConn.Children(dir)
+	if err != nil {
+		logrus.Errorf("RLock Children %s", err.Error())
+		return err
+	}
+
+	for _, child := range children{
+		nodeName := dir + "/" + child
+		err = DeleteNode(nodeName)
+		if err != nil {
+			logrus.Errorf("RLock Children %s", err.Error())
+			return err
+		}
+	}
+
 	return
 }
