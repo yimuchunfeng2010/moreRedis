@@ -12,6 +12,8 @@ service MoreRpcProto {
     rpc InGetKey(Data) returns(Data){}
       // 设置key/value
     rpc InSetValue(Data) returns(Data){}
+    // 获取全部key/value
+    rpc InGetKeys(Data) returns(stream Data){}
 
     // 提交事务
     rpc Commit(CommitIDMsg) returns(CommitIDMsg){}

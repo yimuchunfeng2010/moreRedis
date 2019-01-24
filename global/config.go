@@ -15,10 +15,13 @@ var Config = struct {
 	RedisAddr           string
 	LocalRpcAddr        string
 	RemoteRpcServers    []string
+	MasterServer        string
 	Timeout             int
 	PreDoReqList        *types.ProcessingRequest
 	RpcConn             []*grpc.ClientConn
+	MasterRpcConn       *grpc.ClientConn
 	RpcClient           []pb.MoreRpcProtoClient
+	MasterRpcClient     pb.MoreRpcProtoClient
 	ZkConn              *zk.Conn
 	ZkConnMaxTime       int
 	LocalRWLocker       *sync.RWMutex
@@ -32,11 +35,14 @@ var Config = struct {
 	RedisAddr:           "127.0.0.1:6379",
 	LocalRpcAddr:        "192.168.228.143:50052",
 	RemoteRpcServers:    []string{"192.168.228.143:50052", "192.168.228.142:50052", "192.168.228.143:50051"},
+	MasterServer:        "192.168.228.143:50052",
 	RedisConn:           nil,
 	Timeout:             5000,
 	PreDoReqList:        nil,
 	RpcConn:             nil,
+	MasterRpcConn:       nil,
 	RpcClient:           nil,
+	MasterRpcClient:     nil,
 	ZkConn:              nil,
 	ZkConnMaxTime:       1000000,
 	LocalRWLocker:       nil,

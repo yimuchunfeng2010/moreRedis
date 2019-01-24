@@ -65,3 +65,7 @@ Dockerfile
 # [version:1.0.6]
 ### Features
 对分布式写数据进行AES加密
+
+# [version:1.0.7]
+### Features
+实现数据同步接口

@@ -8,34 +8,36 @@ import (
 	pb "more-for-redis/more_rpc/more_proto"
 	"context"
 	"more-for-redis/internal_interface"
+	"more-for-redis/redis_operation"
 	"time"
 )
+
 type MoreServer struct {
 }
 
-func (s *MoreServer) InGetKey(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
+func (s *MoreServer) InGetKey(ctx context.Context, data *pb.Data) (resp *pb.Data, err error) {
 	return
 }
 
-func (s *MoreServer) InSetValue(ctx context.Context, data *pb.Data)(resp *pb.Data, err error){
+func (s *MoreServer) InSetValue(ctx context.Context, data *pb.Data) (resp *pb.Data, err error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 5000*time.Millisecond)
-	defer func(){
+	defer func() {
 		cancel()
 	}()
 
-	err = internal_interface.PreSet(data.Key,data.Value, data.CommitID)
+	err = internal_interface.PreSet(data.Key, data.Value, data.CommitID)
 	if err != nil {
 		logrus.Warningf("PreSet Failed[data:%+v, err:%+s]", data, err.Error())
 		return
 	}
 
 	logrus.Infof("internal_interface.PreSet Success")
-	return &pb.Data{},nil
+	return &pb.Data{}, nil
 }
 
-func (s *MoreServer) Commit(ctx context.Context, data *pb.CommitIDMsg)(resp *pb.CommitIDMsg, err error){
+func (s *MoreServer) Commit(ctx context.Context, data *pb.CommitIDMsg) (resp *pb.CommitIDMsg, err error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 5000*time.Millisecond)
-	defer func(){
+	defer func() {
 		cancel()
 	}()
 	logrus.Infof("internal_interface.Commit")
@@ -44,12 +46,12 @@ func (s *MoreServer) Commit(ctx context.Context, data *pb.CommitIDMsg)(resp *pb.
 		logrus.Warningf("Commit Failed[data:%+v, err:%+s]", data, err.Error())
 		return
 	}
-	return &pb.CommitIDMsg{},nil
+	return &pb.CommitIDMsg{}, nil
 }
 
-func (s *MoreServer) Drop(ctx context.Context, data *pb.CommitIDMsg)(resp *pb.CommitIDMsg, err error){
+func (s *MoreServer) Drop(ctx context.Context, data *pb.CommitIDMsg) (resp *pb.CommitIDMsg, err error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 5000*time.Millisecond)
-	defer func(){
+	defer func() {
 		cancel()
 	}()
 
@@ -58,10 +60,26 @@ func (s *MoreServer) Drop(ctx context.Context, data *pb.CommitIDMsg)(resp *pb.Co
 		logrus.Warningf("Drop Failed[data:%+v, err:%+s]", data, err.Error())
 		return
 	}
-	return &pb.CommitIDMsg{},nil
+	return &pb.CommitIDMsg{}, nil
 }
 
-func MoreRpcInit(){
+func (s *MoreServer) InGetKeys(data *pb.Data, stream pb.MoreRpcProto_InGetKeysServer) (err error) {
+	keys, err := redis_operation.RedisGetKeys()
+	if err != nil {
+		logrus.Warningf("RedisGetKeys Failed[Err:%s]", err.Error())
+		return err
+	}
+	for _, key := range keys {
+		value, _ := redis_operation.RedisGet(key)
+		if err = stream.Send(&pb.Data{Key: key, Value: value}); err != nil {
+			logrus.Warnf("stream.Send Failed[key: %s,value: %s, Err:%s]", key, value, err.Error())
+			return
+		}
+	}
+	return
+}
+
+func MoreRpcInit() {
 	lis, err := net.Listen("tcp", global.Config.LocalRpcAddr)
 	if err != nil {
 		logrus.Fatal("failed to listen: %s", err.Error())

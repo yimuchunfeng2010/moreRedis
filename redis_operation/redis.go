@@ -31,3 +31,16 @@ func RedisGet(key string)(value string, err error){
 	}
 	return
 }
+
+func RedisGetKeys()(keys []string,err error){
+	if nil == global.Config.RedisConn{
+		logrus.Errorf("RedisConn nil")
+		return
+	}
+	keys, err = redis.Strings(global.Config.RedisConn.Do("KEYS", "*"))
+	if err != nil {
+		logrus.Errorf("redis Get Keys error %s",err.Error())
+		return
+	}
+	return
+}
