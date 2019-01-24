@@ -26,6 +26,7 @@ var Config = struct {
 	CleanCommitCronSpec string
 	LockerTimeout       int64
 	CommitTimeout       int64
+	Aeskey              string
 }{
 	ZkIPaddr:            "192.168.228.143:2181",
 	RedisAddr:           "127.0.0.1:6379",
@@ -43,4 +44,5 @@ var Config = struct {
 	CommitTimeout:       10 * 60,
 	CleanLockerCronSpec: "0 */10 * * * *",
 	CleanCommitCronSpec: "0 */10 * * * *",
+	Aeskey:              "01234567899801234567899801234567899876",
 }

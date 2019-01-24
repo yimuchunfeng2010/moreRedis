@@ -61,3 +61,7 @@ Dockerfile
 # [version:1.0.5]
 ### Features
 增加定时清理超时锁和待处理事务问题
+
+# [version:1.0.6]
+### Features
+对分布式写数据进行AES加密

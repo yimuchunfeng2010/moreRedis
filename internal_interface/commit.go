@@ -3,19 +3,41 @@ package internal_interface
 import (
 	"more-for-redis/types"
 	"more-for-redis/global"
+	"more-for-redis/internal_interface/util"
 	"more-for-redis/redis_operation"
 	"errors"
 	"time"
+	"github.com/sirupsen/logrus"
 )
 
-func PreSet(key string, value string, commitID int64)(err error){
+func PreSet(xKey string, xValue string, commitID int64) (err error) {
+	// 数据解密
+	var deKey []byte
+	var deValue []byte
+	if "" != global.Config.Aeskey{
+		deKey, err = util.AesDecrypt([]byte(xKey), []byte(global.Config.Aeskey))
+		if err != nil {
+			logrus.Warningf("AesEncrypt.Key Failed! [Err:%s]", err.Error())
+			return
+		}
+
+		deValue, err = util.AesDecrypt([]byte(xValue), []byte(global.Config.Aeskey))
+		if err != nil {
+			logrus.Warningf("AesEncrypt.value Failed! [Err:%s]", err.Error())
+			return
+		}
+	} else{
+		deKey = []byte(xKey)
+		deValue = []byte(xValue)
+	}
+
 	todoReq := &types.ProcessingRequest{
-		CommitID:commitID,
-		Req:types.ReqType_SET,
-		Key:key,
-		Value:value,
-		Next:nil,
-		CreateTime:time.Now().Unix(),
+		CommitID:   commitID,
+		Req:        types.ReqType_SET,
+		Key:        string(deKey),
+		Value:      string(deValue),
+		Next:       nil,
+		CreateTime: time.Now().Unix(),
 	}
 
 	// 插入到头部
@@ -26,45 +48,44 @@ func PreSet(key string, value string, commitID int64)(err error){
 	return
 }
 
-
-func Commit(commitID int64)(err error){
-	if nil == global.Config.PreDoReqList{
+func Commit(commitID int64) (err error) {
+	if nil == global.Config.PreDoReqList {
 		return errors.New("commit job not exist")
 	}
 
-	var curJob  *types.ProcessingRequest = nil
-	if(commitID == global.Config.PreDoReqList.CommitID){
+	var curJob *types.ProcessingRequest = nil
+	if (commitID == global.Config.PreDoReqList.CommitID) {
 		curJob = global.Config.PreDoReqList
 		global.Config.PreDoReqList = global.Config.PreDoReqList.Next
-	} else{
+	} else {
 		tmpPre := global.Config.PreDoReqList
-		for tmpPre.Next != nil && tmpPre.Next.CommitID != commitID{
+		for tmpPre.Next != nil && tmpPre.Next.CommitID != commitID {
 			tmpPre = tmpPre.Next
 		}
-		if tmpPre.Next != nil && tmpPre.Next.CommitID == commitID{
+		if tmpPre.Next != nil && tmpPre.Next.CommitID == commitID {
 			curJob = tmpPre.Next
 			tmpPre.Next = tmpPre.Next.Next
 		}
 
 	}
 
-	if nil == curJob{
+	if nil == curJob {
 		return errors.New("commit job not exist")
-	} else{
+	} else {
 		return DoJob(curJob)
 	}
 	return
 }
 
-func Drop(commitID int64)(err error){
-	if(commitID == global.Config.PreDoReqList.CommitID){
+func Drop(commitID int64) (err error) {
+	if (commitID == global.Config.PreDoReqList.CommitID) {
 		global.Config.PreDoReqList = global.Config.PreDoReqList.Next
-	} else{
+	} else {
 		tmpPre := global.Config.PreDoReqList
-		for tmpPre.Next != nil && tmpPre.Next.CommitID != commitID{
+		for tmpPre.Next != nil && tmpPre.Next.CommitID != commitID {
 			tmpPre = tmpPre.Next
 		}
-		if tmpPre.Next != nil && tmpPre.Next.CommitID == commitID{
+		if tmpPre.Next != nil && tmpPre.Next.CommitID == commitID {
 			tmpPre.Next = tmpPre.Next.Next
 		}
 
@@ -72,14 +93,14 @@ func Drop(commitID int64)(err error){
 	return
 }
 
-func DoJob(job *types.ProcessingRequest)(err error){
+func DoJob(job *types.ProcessingRequest) (err error) {
 	if nil == job {
 		return errors.New("job nil")
 	}
 
 	switch job.Req {
 	case types.ReqType_SET:
-		err = redis_operation.RedisSet(job.Key,job.Value)
+		err = redis_operation.RedisSet(job.Key, job.Value)
 	default:
 		err = errors.New("Wrong Request Type")
 	}
