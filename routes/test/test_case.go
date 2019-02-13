@@ -1,18 +1,18 @@
 package test
 
 import (
-	//"more-for-redis/routes/rpc"
-	"more-for-redis/global"
+	//"moreRedis/routes/rpc"
+	"moreRedis/global"
 	"github.com/garyburd/redigo/redis"
-	pb "more-for-redis/more_rpc/more_proto"
+	pb "moreRedis/more_rpc/more_proto"
 	"github.com/sirupsen/logrus"
 	"google.golang.org/grpc"
 	"github.com/samuel/go-zookeeper/zk"
 	"time"
-	"more-for-redis/distributed_lock"
+	"moreRedis/distributed_lock"
 	"fmt"
 	"sync"
-	"more-for-redis/more_rpc"
+	"moreRedis/more_rpc"
 )
 
 func init() {

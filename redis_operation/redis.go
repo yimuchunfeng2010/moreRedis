@@ -2,7 +2,7 @@ package redis_operation
 
 import (
 	"github.com/garyburd/redigo/redis"
-	"more-for-redis/global"
+	"moreRedis/global"
 	"github.com/sirupsen/logrus"
 )
 

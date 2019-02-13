@@ -2,10 +2,10 @@ package more_rpc
 
 import (
 	"time"
-	pb "more-for-redis/more_rpc/more_proto"
+	pb "moreRedis/more_rpc/more_proto"
 	"context"
 	"github.com/sirupsen/logrus"
-	"more-for-redis/redis_operation"
+	"moreRedis/redis_operation"
 	"io"
 )
 

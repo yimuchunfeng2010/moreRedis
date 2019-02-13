@@ -1,6 +1,6 @@
 package test
 
-import ("more-for-redis/routes/rpc"
+import ("moreRedis/routes/rpc"
 "testing")
 
 func Benchmark_RedisSet(b *testing.B) {

@@ -2,19 +2,19 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"more-for-redis/routes/rest"
-	"more-for-redis/distributed_lock"
-	"more-for-redis/global"
+	"moreRedis/routes/rest"
+	"moreRedis/distributed_lock"
+	"moreRedis/global"
 	"github.com/garyburd/redigo/redis"
-	pb "more-for-redis/more_rpc/more_proto"
+	pb "moreRedis/more_rpc/more_proto"
 	"github.com/sirupsen/logrus"
-	"more-for-redis/more_rpc"
+	"moreRedis/more_rpc"
 	"google.golang.org/grpc"
 	"github.com/samuel/go-zookeeper/zk"
 	"time"
 	"sync"
-	"more-for-redis/services"
-	"more-for-redis/task"
+	"moreRedis/services"
+	"moreRedis/task"
 )
 
 func init() {
@@ -85,7 +85,7 @@ func main() {
 	{
 		v1.GET("/:key", rest.Get)
 		v1.POST("/:key/:value", rest.Set)
-		v1.POST("/syncData", rest.SyncData)
+		//v1.POST("/syncData", rest.SyncData)
 
 	}
 

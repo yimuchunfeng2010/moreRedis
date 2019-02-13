@@ -1,7 +1,7 @@
 package rpc
 
 import (
-	"more-for-redis/redis_operation"
+	"moreRedis/redis_operation"
 )
 
 func LigthGet(key string) (value string, err error) {

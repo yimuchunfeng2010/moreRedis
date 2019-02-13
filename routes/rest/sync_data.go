@@ -2,8 +2,8 @@ package rest
 
 import (
 	"github.com/gin-gonic/gin"
-	"more-for-redis/data"
-	"more-for-redis/global"
+	"moreRedis/data"
+	"moreRedis/global"
 	"net/http"
 )
 

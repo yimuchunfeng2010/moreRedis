@@ -2,9 +2,9 @@ package task
 
 import (
 	"github.com/sirupsen/logrus"
-	"more-for-redis/services"
-	"more-for-redis/global"
-	"more-for-redis/distributed_lock"
+	"moreRedis/services"
+	"moreRedis/global"
+	"moreRedis/distributed_lock"
 	"fmt"
 	"time"
 	"strconv"

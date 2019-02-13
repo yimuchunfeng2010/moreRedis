@@ -2,8 +2,8 @@ package global
 
 import (
 	"github.com/garyburd/redigo/redis"
-	"more-for-redis/types"
-	pb "more-for-redis/more_rpc/more_proto"
+	"moreRedis/types"
+	pb "moreRedis/more_rpc/more_proto"
 	"github.com/samuel/go-zookeeper/zk"
 	"google.golang.org/grpc"
 	"sync"

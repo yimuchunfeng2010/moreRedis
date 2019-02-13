@@ -1,8 +1,8 @@
 package rpc
 
 import (
-	"more-for-redis/redis_operation"
-	"more-for-redis/global"
+	"moreRedis/redis_operation"
+	"moreRedis/global"
 )
 
 func Get(key string) (value string,  err error) {

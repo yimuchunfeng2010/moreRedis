@@ -1,13 +1,13 @@
 package data
 
 import (
-	"more-for-redis/distributed_lock"
-	"more-for-redis/internal_interface/util"
-	pb "more-for-redis/more_rpc/more_proto"
+	"moreRedis/distributed_lock"
+	"moreRedis/internal_interface/util"
+	pb "moreRedis/more_rpc/more_proto"
 	"github.com/sirupsen/logrus"
-	"more-for-redis/more_rpc"
+	"moreRedis/more_rpc"
 	"time"
-	"more-for-redis/global"
+	"moreRedis/global"
 	"sync"
 )
 

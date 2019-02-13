@@ -1,10 +1,10 @@
 package internal_interface
 
 import (
-	"more-for-redis/types"
-	"more-for-redis/global"
-	"more-for-redis/internal_interface/util"
-	"more-for-redis/redis_operation"
+	"moreRedis/types"
+	"moreRedis/global"
+	"moreRedis/internal_interface/util"
+	"moreRedis/redis_operation"
 	"errors"
 	"time"
 	"github.com/sirupsen/logrus"

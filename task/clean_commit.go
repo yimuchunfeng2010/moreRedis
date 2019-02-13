@@ -2,11 +2,11 @@ package task
 
 import (
 	"github.com/sirupsen/logrus"
-	"more-for-redis/services"
-	"more-for-redis/global"
+	"moreRedis/services"
+	"moreRedis/global"
 	"fmt"
 	"time"
-	"more-for-redis/types"
+	"moreRedis/types"
 )
 
 // 清理过期commit

@@ -3,9 +3,9 @@ package rest
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
-	"more-for-redis/data"
+	"moreRedis/data"
 	"net/http"
-	"more-for-redis/global"
+	"moreRedis/global"
 	"time"
 )
 

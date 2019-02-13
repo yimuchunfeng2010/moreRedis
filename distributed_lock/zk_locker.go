@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 	"github.com/sirupsen/logrus"
-	"more-for-redis/global"
+	"moreRedis/global"
 	"errors"
 )
 

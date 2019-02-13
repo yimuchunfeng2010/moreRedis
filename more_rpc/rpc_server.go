@@ -2,13 +2,13 @@ package more_rpc
 
 import (
 	"net"
-	"more-for-redis/global"
+	"moreRedis/global"
 	"github.com/sirupsen/logrus"
 	"google.golang.org/grpc"
-	pb "more-for-redis/more_rpc/more_proto"
+	pb "moreRedis/more_rpc/more_proto"
 	"context"
-	"more-for-redis/internal_interface"
-	"more-for-redis/redis_operation"
+	"moreRedis/internal_interface"
+	"moreRedis/redis_operation"
 	"time"
 )
 

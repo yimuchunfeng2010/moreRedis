@@ -1,10 +1,10 @@
 package data
 
 import (
-	"more-for-redis/distributed_lock"
+	"moreRedis/distributed_lock"
 	"github.com/sirupsen/logrus"
-	"more-for-redis/more_rpc"
-	"more-for-redis/global"
+	"moreRedis/more_rpc"
+	"moreRedis/global"
 )
 
 func SyncData()(err error){

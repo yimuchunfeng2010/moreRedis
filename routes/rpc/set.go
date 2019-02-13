@@ -1,8 +1,8 @@
 package rpc
 
 import (
-	"more-for-redis/data"
-	"more-for-redis/global"
+	"moreRedis/data"
+	"moreRedis/global"
 )
 
 func Set(key string, value string) (err error) {
